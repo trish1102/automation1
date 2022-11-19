@@ -1,6 +1,7 @@
 ﻿//open browser
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.Events;
 
 IWebDriver driver = new ChromeDriver();
 driver.Manage().Window.Maximize();
@@ -31,4 +32,49 @@ else
 
 
 
+//click on administration scrolldown
+IWebElement administrationScrolldown = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/a/span"));
+administrationScrolldown.Click();
+Thread.Sleep(500);
+//click time&materials
+IWebElement timematerials = driver.FindElement(By.XPath("/html/body/div[3]/div/div/ul/li[5]/ul/li[3]/a"));
 //
+timematerials.Click();
+//create new record
+IWebElement createnewButton = driver.FindElement(By.XPath("//*[@id=\"container\"]/p/a"));
+createnewButton.Click();
+Thread.Sleep(500);
+//scrolldown and click value in typecode 
+IWebElement typecodeScrolldown = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[1]/div/span[1]/span/span[2]/span"));
+typecodeScrolldown.Click();
+IWebElement timeoption = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[1]/div/span[1]/span/span[1]"));
+
+timeoption.Click();
+//enter value in code textbox
+IWebElement codeTextbox = driver.FindElement(By.Id("Code"));
+codeTextbox.SendKeys("123");
+//enter value in description textbox
+IWebElement descriptionTextbox = driver.FindElement(By.Id("Description"));
+descriptionTextbox.SendKeys("123");
+//enter value in price per unit(only number)
+IWebElement overlappingTag = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span"));
+overlappingTag.Click();
+IWebElement priceTextbox = driver.FindElement(By.XPath("//*[@id=\"Price\"]"));
+priceTextbox.SendKeys("123");
+//click on save button
+IWebElement saveButton = driver.FindElement(By.Id("SaveButton"));
+saveButton.Click();
+Thread.Sleep(1000);
+//click on last page button
+IWebElement lastpage = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+lastpage.Click();
+//confirm its entered successfully
+IWebElement newcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+if (newcode.Text == "123")
+{
+    Console.WriteLine("material record created successfully");
+}
+else 
+{
+    Console.WriteLine("record hasn't created successfully");
+}
