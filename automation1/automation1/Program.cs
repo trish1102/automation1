@@ -103,6 +103,6 @@ Thread.Sleep(3000);
 //    Console.WriteLine("record editing failed");
 //}
 //delete button
-//IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[last()]/a[last()]"));
-//deleteButton.Click();
-//driver.SwitchTo().Alert().Accept();
+IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[last()]/a[last()]"));
+deleteButton.Click();
+driver.SwitchTo().Alert().Accept();
