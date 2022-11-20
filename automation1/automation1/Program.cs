@@ -92,16 +92,18 @@ codeTextbox1.SendKeys("567");
 IWebElement savevalue = driver.FindElement(By.XPath("//*[@id=\"SaveButton\"]"));
 savevalue.Click();
 Thread.Sleep(3000);
+IWebElement pagelast = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+pagelast.Click();
 //check if its work
-//IWebElement editcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-//if (editcode.Text == "567")
-//{
-//  Console.WriteLine("record edited successfully");
-//}
-//else
-//{
-//    Console.WriteLine("record editing failed");
-//}
+IWebElement editcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+if (editcode.Text == "567")
+{
+  Console.WriteLine("record edited successfully");
+}
+else
+{
+    Console.WriteLine("record editing failed");
+}
 //delete button
 IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[last()]/a[last()]"));
 deleteButton.Click();
