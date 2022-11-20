@@ -78,3 +78,31 @@ else
 {
     Console.WriteLine("record hasn't created successfully");
 }
+//click on edit button
+IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
+////*[@id="tmsGrid"]/div[3]/table/tbody/tr/td[5]/a[1]
+editButton.Click();
+Thread.Sleep(500);
+//edit values
+IWebElement codeTextbox1 = driver.FindElement(By.XPath("//*[@id=\"Code\"]"));
+codeTextbox1.Clear();
+codeTextbox1.SendKeys("567");
+
+//save values
+IWebElement savevalue = driver.FindElement(By.XPath("//*[@id=\"SaveButton\"]"));
+savevalue.Click();
+Thread.Sleep(3000);
+//check if its work
+//IWebElement editcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+//if (editcode.Text == "567")
+//{
+//  Console.WriteLine("record edited successfully");
+//}
+//else
+//{
+//    Console.WriteLine("record editing failed");
+//}
+//delete button
+//IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[last()]/a[last()]"));
+//deleteButton.Click();
+//driver.SwitchTo().Alert().Accept();
