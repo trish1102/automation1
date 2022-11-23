@@ -38,10 +38,12 @@ namespace automation1.Pages
             IWebElement saveButton = driver.FindElement(By.Id("SaveButton"));
             saveButton.Click();
             Thread.Sleep(1000);
+           // Wait.WaitForElementToBeClickable(driver,"XPath", "//*[@id=\"tmsGrid\"]/div[4]/a[4]/span",10);
             //click on last page button
             IWebElement lastpage = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             lastpage.Click();
             Thread.Sleep(3000);
+            //Wait.WaitForElementTobeExist(driver,"XPath","//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]",10);
             //confirm its entered successfully
             IWebElement newcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
             if (newcode.Text == "123")
@@ -70,9 +72,11 @@ namespace automation1.Pages
             IWebElement savevalue = driver.FindElement(By.XPath("//*[@id=\"SaveButton\"]"));
             savevalue.Click();
             Thread.Sleep(3000);
+           // Wait.WaitForElementToBeClickable(driver,"XPath", "//*[@id=\"tmsGrid\"]/div[4]/a[4]/span",10);
             IWebElement pagelast = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             pagelast.Click();
             //check if its work
+            Wait.WaitForElementTobeExist(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 10);
             IWebElement editcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
             if (editcode.Text == "567")
             {
