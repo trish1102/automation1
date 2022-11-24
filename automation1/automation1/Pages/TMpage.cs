@@ -1,10 +1,6 @@
 ﻿using automation1.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace automation1.Pages
 {
@@ -37,7 +33,7 @@ namespace automation1.Pages
             //click on save button
             IWebElement saveButton = driver.FindElement(By.Id("SaveButton"));
             saveButton.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
            // Wait.WaitForElementToBeClickable(driver,"XPath", "//*[@id=\"tmsGrid\"]/div[4]/a[4]/span",10);
             //click on last page button
             IWebElement lastpage = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
@@ -46,18 +42,22 @@ namespace automation1.Pages
             //Wait.WaitForElementTobeExist(driver,"XPath","//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]",10);
             //confirm its entered successfully
             IWebElement newcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-            if (newcode.Text == "123")
-            {
-                Console.WriteLine("material record created successfully");
-            }
-            else
-            {
-                Console.WriteLine("record hasn't created successfully");
-            }
+            Assert.That(newcode.Text == "123", "Actual code and expected code do not match.");
+            //  if (newcode.Text == "123")
+            // {
+            //Console.WriteLine("material record created successfully");
+            //Assert.Pass("test passed successfully");
+            //}
+            //else
+            //{
+             //   Console.WriteLine("record hasn't created successfully");
+            //}
         }
         public void editTM(IWebDriver driver)
         {
-
+            Thread.Sleep(3000);
+            IWebElement pagelast2 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+            pagelast2.Click();
             //click on edit button
             IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
             ////*[@id="tmsGrid"]/div[3]/table/tbody/tr/td[5]/a[1]
@@ -73,22 +73,26 @@ namespace automation1.Pages
             savevalue.Click();
             Thread.Sleep(3000);
            // Wait.WaitForElementToBeClickable(driver,"XPath", "//*[@id=\"tmsGrid\"]/div[4]/a[4]/span",10);
-            IWebElement pagelast = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
-            pagelast.Click();
+            IWebElement pagelast1 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+            pagelast1.Click();
             //check if its work
             Wait.WaitForElementTobeExist(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 10);
             IWebElement editcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-            if (editcode.Text == "567")
-            {
-                Console.WriteLine("record edited successfully");
-            }
-            else
-            {
-                Console.WriteLine("record editing failed");
-            }
+            Assert.That(editcode.Text == "567" , "Actual code and expected code do not match.");
+           // if (editcode.Text == "567")
+            //{
+              //  Console.WriteLine("record edited successfully");
+           // }
+           // else
+           // {
+           //     Console.WriteLine("record editing failed");
+            //}
         }
         public void deleteTM(IWebDriver driver)
         {
+            Thread.Sleep(3000);
+            IWebElement pagelast = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
+            pagelast.Click();
             //delete button
             IWebElement deleteButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[last()]/a[last()]"));
             deleteButton.Click();
