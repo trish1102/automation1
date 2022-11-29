@@ -1,6 +1,4 @@
-﻿using automation1.Utilities;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿
 
 namespace automation1.Pages
 {

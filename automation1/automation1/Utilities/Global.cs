@@ -9,7 +9,7 @@ global using OpenQA.Selenium.Support.Events;
 global using NUnit.Framework;
 global using automation1.Utilities;
 global using static System.Net.Mime.MediaTypeNames;
-
+global using OpenQA.Selenium.Support.UI;
 namespace automation1.Utilities
 {
     internal class Global

@@ -1,9 +1,4 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace automation1.Utilities
 {
@@ -11,7 +6,7 @@ namespace automation1.Utilities
     {
          
         public static IWebDriver driver;
-        [SetUp]
+        [OneTimeSetUp]
 
         public void loginSteps()
         {
@@ -21,10 +16,10 @@ namespace automation1.Utilities
             loginpageobj.loginaction(driver);
 
         }
-        [TearDown]
+      [OneTimeTearDown]
         public void CloseTestRun()
         {
-            driver.Quit();
+        driver.Quit();
         }
 
     }
