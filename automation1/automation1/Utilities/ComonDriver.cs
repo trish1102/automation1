@@ -5,7 +5,7 @@ namespace automation1.Utilities
     public class ComonDriver
     {
          
-        public static IWebDriver driver;
+        public  IWebDriver driver;
         [OneTimeSetUp]
 
         public void loginSteps()
@@ -17,7 +17,7 @@ namespace automation1.Utilities
 
         }
       [OneTimeTearDown]
-        public void CloseTestRun()
+       public void CloseTestRun()
         {
         driver.Quit();
         }
