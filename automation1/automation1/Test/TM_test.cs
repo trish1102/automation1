@@ -24,7 +24,7 @@ namespace automation1.Test
             Homepage homepageobj = new Homepage();
             homepageobj.gotoTMpage(driver);
             TMpage tmpageobj = new TMpage();
-            tmpageobj.editTM(driver);
+           // tmpageobj.editTM(driver);
         }
         [Test,Order(3), Description("Check if user is able to delete data")]
         public void DeleteTM_Test()

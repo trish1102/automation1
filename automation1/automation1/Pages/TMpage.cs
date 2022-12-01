@@ -1,5 +1,7 @@
 ﻿
 
+using System.Security.Cryptography.X509Certificates;
+
 namespace automation1.Pages
 {
     public class TMpage
@@ -39,8 +41,8 @@ namespace automation1.Pages
             Thread.Sleep(3000);
             //Wait.WaitForElementTobeExist(driver,"XPath","//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]",10);
             //confirm its entered successfully
-            IWebElement newcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-            Assert.That(newcode.Text == "123", "Actual code and expected code do not match.");
+            
+            
             //  if (newcode.Text == "123")
             // {
             //Console.WriteLine("material record created successfully");
@@ -51,7 +53,13 @@ namespace automation1.Pages
              //   Console.WriteLine("record hasn't created successfully");
             //}
         }
-        public void editTM(IWebDriver driver)
+        public string GetCode(IWebDriver driver)
+        {
+            IWebElement actualcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            return actualcode.Text;
+        }
+
+        public void editTM(IWebDriver driver,string Description)
         {
             Thread.Sleep(3000);
             IWebElement pagelast2 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
@@ -65,7 +73,9 @@ namespace automation1.Pages
             IWebElement codeTextbox1 = driver.FindElement(By.XPath("//*[@id=\"Code\"]"));
             codeTextbox1.Clear();
             codeTextbox1.SendKeys("567");
-
+            IWebElement discription1 = driver.FindElement(By.XPath("//*[@id=\"Description\"]"));
+            discription1.Clear();
+            discription1.SendKeys(Description);
             //save values
             IWebElement savevalue = driver.FindElement(By.XPath("//*[@id=\"SaveButton\"]"));
             savevalue.Click();
@@ -75,8 +85,8 @@ namespace automation1.Pages
             pagelast1.Click();
             //check if its work
             Wait.WaitForElementTobeExist(driver, "XPath", "//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]", 10);
-            IWebElement editcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
-            Assert.That(editcode.Text == "567" , "Actual code and expected code do not match.");
+           // IWebElement editcode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            //Assert.That(editcode.Text == "567" , "Actual code and expected code do not match.");
            // if (editcode.Text == "567")
             //{
               //  Console.WriteLine("record edited successfully");
@@ -85,6 +95,11 @@ namespace automation1.Pages
            // {
            //     Console.WriteLine("record editing failed");
             //}
+        }
+        public string geteditedvalue(IWebDriver driver)
+        {
+            IWebElement editDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
+            return editDescription.Text;
         }
         public void deleteTM(IWebDriver driver)
         {
