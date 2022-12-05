@@ -16,7 +16,7 @@ namespace automation1.Utilities
             loginpageobj.loginaction(driver);
 
         }
-      [OneTimeTearDown]
+     [OneTimeTearDown]
        public void CloseTestRun()
         {
         driver.Quit();

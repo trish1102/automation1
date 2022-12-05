@@ -52,6 +52,17 @@ namespace automation1.StepDefinitions
             string UpdatedDescription = tmpageobj.geteditedvalue(driver);
             Assert.That(UpdatedDescription == Description, "update description failed");
         }
+        [When(@"I update '([^']*)','([^']*)','([^']*)' in last created record")]
+        public void WhenIUpdateInLastCreatedRecord(string time, string p1, string p2)
+        {
+            throw new PendingStepException();
+        }
+        [Then(@"The record should have updated '([^']*)','([^']*)','([^']*)' successfully")]
+        public void ThenTheRecordShouldHaveUpdatedSuccessfully(string time, string p1, string p2)
+        {
+            throw new PendingStepException();
+        }
+
 
 
 

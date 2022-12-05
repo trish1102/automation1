@@ -25,13 +25,13 @@ namespace automation1.Pages
             IWebElement retypepasswordTextbox = driver.FindElement(By.XPath("//*[@id=\"RetypePassword\"]"));
             retypepasswordTextbox.SendKeys("Trisha105");
             //enter value in Vehicle Textbox
-           // IWebElement vehicleTextbox = driver.FindElement(By.XPath("//*[@id=\"UserEditForm\"]/div/div[7]/div/span[1]/span/input"));
-         //   nameTextbox.SendKeys("car");
+            IWebElement vehicleTextbox = driver.FindElement(By.XPath("//*[@id=\"UserEditForm\"]/div/div[7]/div/span[1]/span/input"));
+            vehicleTextbox.SendKeys("car");
             //enter value in Groups Textbox
-           // IWebElement groupTextbox = driver.FindElement(By.XPath("//*[@id=\"UserEditForm\"]/div/div[8]/div/div/div[1]"));
-           // groupTextbox.SendKeys("nztest");
-
-            //click on save button
+            IWebElement groupdropbox = driver.FindElement(By.XPath("//*[@id=\"UserEditForm\"]/div/div[8]/div/div/div[1]"));
+             groupdropbox.Click();
+           // groupdropbox.SendKeys("nztest");
+             //click on save button
             IWebElement saveemployeeButton = driver.FindElement(By.XPath("//*[@id=\"SaveButton\"]"));
             saveemployeeButton.Click();
             Thread.Sleep(3000);
