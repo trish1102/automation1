@@ -15,6 +15,6 @@ Scenario Outline: Edit created material record with valid details
 	Then The record should have updated '<Description>','<Code>','<Price>' successfully
 Examples: 
 | Description   | Code | Price |
-| Time          | c001 | 12    |
-| Material      | c002 | 200   |
-| Record edited | c003 | 1999  |
+| Time          | c001 | $12.00    |
+| Material      | c002 | $200.00   |
+| Record edited | c003 | $100.00  |

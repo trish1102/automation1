@@ -6,19 +6,22 @@ namespace automation1.StepDefinitions
     [Binding]
     public class TimeAndMaterialFeatureStepDefinitions :ComonDriver
     {
+        //import loginpage here
+        Loginpage loginpageobj = new Loginpage();
+        Homepage homepageobj = new Homepage();
+        TMpage tmpageobj = new TMpage();
         [Given(@"I logged into turn up portal successfully")]
         public void GivenILoggedIntoTurnUpPortalSuccessfully()
         {
             driver = new ChromeDriver();
-            //import loginpage here
-            Loginpage loginpageobj = new Loginpage();
+            
             loginpageobj.loginaction(driver);
         }
 
         [When(@"I navigate to Time and Material page")]
         public void WhenINavigateToTimeAndMaterialPage()
         {
-            Homepage homepageobj = new Homepage();
+            
             homepageobj.gotoTMpage(driver);
             
         }
@@ -26,7 +29,7 @@ namespace automation1.StepDefinitions
         [When(@"I create a new Time and Material record")]
         public void WhenICreateANewTimeAndMaterialRecord()
         {
-            TMpage tmpageobj = new TMpage();
+            
             tmpageobj.createTM(driver);
 
         }
@@ -34,33 +37,30 @@ namespace automation1.StepDefinitions
         [Then(@"The record should be created successfully")]
         public void ThenTheRecordShouldBeCreatedSuccessfully()
         {
-            TMpage tmpageobj = new TMpage();
+          
             string newcode = tmpageobj.GetCode(driver);
             Assert.That(newcode == "123", "Actual code and expected code do not match.");
         }
-        [When(@"I update '([^']*)' in last created record")]
-        public void WhenIUpdateInLastCreatedRecord(string Description)
+        
+           
+        [When(@"I update '([^']*)','([^']*)','([^']*)' in last created record")]
+        public void WhenIUpdateInLastCreatedRecord(string Description, string Code, string Price)
         {
-            TMpage tmpageobj = new TMpage();
-             tmpageobj.editTM(driver,Description);
+            
+            tmpageobj.editTM(driver, Description,Code,Price);
 
         }
-        [Then(@"The record should have updated '([^']*)' successfully")]
-        public void ThenTheRecordShouldHaveUpdatedSuccessfully(string Description)
-        {
-            TMpage tmpageobj = new TMpage();
-            string UpdatedDescription = tmpageobj.geteditedvalue(driver);
-            Assert.That(UpdatedDescription == Description, "update description failed");
-        }
-        [When(@"I update '([^']*)','([^']*)','([^']*)' in last created record")]
-        public void WhenIUpdateInLastCreatedRecord(string time, string p1, string p2)
-        {
-            throw new PendingStepException();
-        }
         [Then(@"The record should have updated '([^']*)','([^']*)','([^']*)' successfully")]
-        public void ThenTheRecordShouldHaveUpdatedSuccessfully(string time, string p1, string p2)
+        public void ThenTheRecordShouldHaveUpdatedSuccessfully(string Description, string Code, string Price)
         {
-            throw new PendingStepException();
+                string UpdatedDescription = tmpageobj.geteditedDescription(driver);
+                Assert.That(UpdatedDescription == Description, "update description failed");
+                string UpdatedCode = tmpageobj.geteditedCode(driver);
+                Assert.That(UpdatedCode == Code, "update code failed");
+                string UpdatedPrice = tmpageobj.geteditPrice(driver);
+                Assert.That(UpdatedPrice == Price, "update code failed");
+
+
         }
 
 

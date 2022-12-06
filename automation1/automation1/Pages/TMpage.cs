@@ -59,23 +59,35 @@ namespace automation1.Pages
             return actualcode.Text;
         }
 
-        public void editTM(IWebDriver driver,string Description)
+        public void editTM(IWebDriver driver,string Description,string Code,string Price)
         {
             Thread.Sleep(3000);
             IWebElement pagelast2 = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[4]/a[4]/span"));
             pagelast2.Click();
             //click on edit button
             IWebElement editButton = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
-            ////*[@id="tmsGrid"]/div[3]/table/tbody/tr/td[5]/a[1]
             editButton.Click();
             Thread.Sleep(500);
             //edit values
             IWebElement codeTextbox1 = driver.FindElement(By.XPath("//*[@id=\"Code\"]"));
             codeTextbox1.Clear();
-            codeTextbox1.SendKeys("567");
+            codeTextbox1.SendKeys(Code);
             IWebElement discription1 = driver.FindElement(By.XPath("//*[@id=\"Description\"]"));
             discription1.Clear();
             discription1.SendKeys(Description);
+            Thread.Sleep(500);
+            IWebElement overlappingTag = driver.FindElement(By.XPath("//*[@id=\"TimeMaterialEditForm\"]/div/div[4]/div/span[1]/span"));
+            
+            IWebElement priceTextbox = driver.FindElement(By.XPath("//*[@id=\"Price\"]"));
+            overlappingTag.Click();
+           
+            priceTextbox.Clear();
+            overlappingTag.Click();
+
+            priceTextbox.SendKeys(Price);
+            // IWebElement pricetextbox1 = driver.FindElement(By.Id("Price"));
+            //pricetextbox1.Clear();
+            // pricetextbox1.SendKeys(Price);
             //save values
             IWebElement savevalue = driver.FindElement(By.XPath("//*[@id=\"SaveButton\"]"));
             savevalue.Click();
@@ -96,11 +108,22 @@ namespace automation1.Pages
            //     Console.WriteLine("record editing failed");
             //}
         }
-        public string geteditedvalue(IWebDriver driver)
+        public string geteditedDescription(IWebDriver driver)
         {
             IWebElement editDescription = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[3]"));
             return editDescription.Text;
         }
+        public string geteditedCode(IWebDriver driver)
+        {
+            IWebElement editCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
+            return editCode.Text;
+        }
+        public string geteditPrice(IWebDriver driver)
+        {
+            IWebElement editPrice = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[4]"));
+            return editPrice.Text;
+        }
+
         public void deleteTM(IWebDriver driver)
         {
             Thread.Sleep(3000);
